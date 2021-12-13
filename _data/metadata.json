@@ -1,0 +1,21 @@
+{
+  "title": "Favourite Recipes",
+  "url": "https://recipes.jwdeane.com/",
+  "language": "en",
+  "description": "A convenient list of the Deane family favourite recipes.",
+  "feed": {
+    "subtitle": "A convenient list of the Deane family favourite recipes.",
+    "filename": "feed.xml",
+    "path": "/feed/feed.xml",
+    "id": "https://recipes.jwdeane.com/"
+  },
+  "jsonfeed": {
+    "path": "/feed/feed.json",
+    "url": "https://recipes.jwdeane.com/feed/feed.json"
+  },
+  "author": {
+    "name": "James Deane",
+    "email": "recipes@jwdeane.com",
+    "url": "https://jwdeane.com/about/"
+  }
+}

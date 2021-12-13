@@ -1,0 +1,12 @@
+<ol reversed class="recipelist" style="counter-reset: start-from {{ (recipeslistCounter or recipeslist.length) + 1 }}">
+{% for recipe in recipeslist | reverse %}
+  <li class="recipelist-item{% if recipe.url == url %} recipelist-item-active{% endif %}">
+    <a href="{{ recipe.url | url }}" class="recipelist-link">{% if recipe.data.title %}{{ recipe.data.title }}{% else %}<code>{{ recipe.url }}</code>{% endif %}</a>
+    <time class="recipelist-date" datetime="{{ recipe.date | htmlDateString }}">{{ recipe.date | readableDate }}</time>
+    {% for tag in recipe.data.tags | filterTagList %}
+      {% set tagUrl %}/tags/{{ tag | slug }}/{% endset %}
+      <a href="{{ tagUrl | url }}" class="recipe-tag">{{ tag }}</a>
+    {% endfor %}
+  </li>
+{% endfor %}
+</ol>

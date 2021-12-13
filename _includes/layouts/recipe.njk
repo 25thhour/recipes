@@ -1,0 +1,30 @@
+---
+layout: layouts/base.njk
+templateClass: tmpl-recipe
+---
+<h1>{{ title }}</h1>
+
+<time datetime="{{ page.date | htmlDateString }}">{{ page.date | readableDate }}</time>
+{%- for tag in tags | filterTagList -%}
+{%- set tagUrl %}/tags/{{ tag | slug }}/{% endset -%}
+<a href="{{ tagUrl | url }}" class="recipe-tag">{{ tag }}</a>
+{%- endfor %}
+
+{{ content | safe }}
+
+<hr>
+{% if cite %}
+<p>Source: <cite><a href="{{ cite | safe}}">{{ cite | safe}}</a></cite></p>
+{% endif %}
+
+{%- if collections.recipes %}
+{%- set nextRecipe = collections.recipes | getNextCollectionItem(page) %}
+{%- set previousRecipe = collections.recipes | getPreviousCollectionItem(page) %}
+{%- if nextRecipe or previousRecipe %}
+<hr>
+<ul>
+  {%- if nextRecipe %}<li>Next: <a href="{{ nextRecipe.url | url }}">{{ nextRecipe.data.title }}</a></li>{% endif %}
+  {%- if previousRecipe %}<li>Previous: <a href="{{ previousRecipe.url | url }}">{{ previousRecipe.data.title }}</a></li>{% endif %}
+</ul>
+{%- endif %}
+{%- endif %}

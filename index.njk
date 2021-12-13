@@ -1,0 +1,14 @@
+---
+layout: layouts/home.njk
+eleventyNavigation:
+  key: Home
+  order: 1
+---
+{% set maxRecipes = collections.recipes.length | min(3) %}
+<h1>Latest {% if maxRecipes == 1 %}Recipe{% else %}{{ maxRecipes }} Recipes{% endif %}</h1>
+
+{% set recipeslist = collections.recipes | head(-3) %}
+{% set recipeslistCounter = collections.recipes | length %}
+{% include "recipeslist.njk" %}
+
+<p>More recipes can be found in <a href="{{ '/recipes/' | url }}">the archive</a>.</p>
